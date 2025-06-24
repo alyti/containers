@@ -26,6 +26,8 @@ RUN apk add --no-cache \
         git \
     && \
     git clone --single-branch --branch "${VERSION}" https://github.com/ferretsys/Ferret.git . \
+    && mkdir -p /defaults \
+    && git log -1 --pretty=format:"%h" > /defaults/hash.txt \
     && \
     npm install \
     && chown -R root:root /app && chmod -R 755 /app \

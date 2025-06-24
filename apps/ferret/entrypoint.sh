@@ -27,6 +27,9 @@ if [[ ! -f "${CONFIG_DIR}/config.json" ]]; then
     cp /defaults/* "${CONFIG_DIR}/"
 
     genToken "main"
+else
+    cp /defaults/hash.txt "${CONFIG_DIR}/hash.txt"
+    echo "Configuration file already exists, skipping initialization."
 fi
 
 [[ -n "${FERRET__TOKEN}" && -n "${FERRET__NETWORK}" ]] && setToken "${FERRET__NETWORK}" "${FERRET__TOKEN}"
