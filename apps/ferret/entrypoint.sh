@@ -32,5 +32,5 @@ fi
 [[ -n "${FERRET__TOKEN}" && -n "${FERRET__NETWORK}" ]] && setToken "${FERRET__NETWORK}" "${FERRET__TOKEN}"
 
 exec \
-    /usr/bin/node \
+    node \
         "/app/src/index.js"
