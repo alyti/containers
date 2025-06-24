@@ -10,14 +10,14 @@ function setToken {
         genToken "${network}"
     else
         echo "Setting token for '${network}' network to '${token}'."
-        cat <<< $(jq '.\"${network}\".token = \"${token}\"' "${CONFIG_DIR}/networks.json") > "${CONFIG_DIR}/networks.json"
+        cat <<< $(jq ".[\"${network}\"].token = \"${token}\"" "${CONFIG_DIR}/networks.json") > "${CONFIG_DIR}/networks.json"
     fi
 }
 
 function genToken {
     local network="$1"
     local token=$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 50 | head -n 1)
-    cat <<< $(jq '.\"${network}\".token = \"${token}\"' "${CONFIG_DIR}/networks.json") > "${CONFIG_DIR}/networks.json"
+    cat <<< $(jq ".[\"${network}\"].token = \"${token}\"" "${CONFIG_DIR}/networks.json") > "${CONFIG_DIR}/networks.json"
     echo "Created token for '${network}' network: ${token}"
 }
 
