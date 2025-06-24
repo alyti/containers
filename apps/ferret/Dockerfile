@@ -8,8 +8,6 @@ ENV PRODUCTION=true
 USER root
 WORKDIR /app
 
-ADD  .
-
 RUN apk add --no-cache \
         bash \
         ca-certificates \
